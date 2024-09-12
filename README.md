@@ -14,7 +14,7 @@ This script automates the installation, reinstallation, or uninstallation of Doc
 You can directly execute the script from this repository using `curl`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/eduhweb/docker-wsl-install/docker-wsl-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/eduhweb/docker-wsl-install/main/docker-wsl-install.sh | bash
 ```
 
 ## Usage
