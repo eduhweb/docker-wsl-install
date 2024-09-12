@@ -59,7 +59,7 @@ This repository includes a Docker Compose file for setting up a local WordPress 
 If you haven't already, clone the repository:
 
 ```bash
-git clone https://github.com/<your-repo>/docker-wsl-install.git
+git clone https://github.com/eduhweb/docker-wsl-install/docker-wsl-install.git
 cd docker-wsl-install/images/wordpress
 ```
 
