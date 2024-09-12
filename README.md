@@ -1,4 +1,4 @@
-# Docker WSL Install Script (`docker-wsl-install.sh`)
+# Docker WSL Install Script
 
 This script automates the installation, reinstallation, or uninstallation of Docker in **WSL2** (Windows Subsystem for Linux 2). It simplifies managing Docker services, installing Docker Compose, and handling Docker configurations specifically for WSL2 environments.
 
