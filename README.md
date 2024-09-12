@@ -1,6 +1,6 @@
 # Docker WSL Install Script (`docker-wsl-install.sh`)
 
-This script automates the installation, reinstallation, or uninstallation of Docker in **WSL2** (Windows Subsystem for Linux 2). It simplifies managing Docker services, installing Docker Compose, and handling Docker configurations specific to WSL2 environments.
+This script automates the installation, reinstallation, or uninstallation of Docker in **WSL2** (Windows Subsystem for Linux 2). It simplifies managing Docker services, installing Docker Compose, and handling Docker configurations specifically for WSL2 environments.
 
 ## Features
 
@@ -35,16 +35,17 @@ curl -fsSL https://raw.githubusercontent.com/eduhweb/docker-wsl-install/docker-w
 
 ## Requirements
 
-- WSL2 with Ubuntu (or similar).
+- WSL2 with Ubuntu or other Linux distros supported by WSL.
 - Internet connection for downloading packages.
-- **Windows Home** users: Make sure to enable the **Windows Hypervisor Platform** in your system settings to run Docker.
 
-## Enabling Windows Hypervisor Platform
+### Hyper-V and Docker in WSL2
 
-To enable the **Windows Hypervisor Platform** on Windows Home:
+For running Docker on Linux distributions other than Ubuntu (e.g., Debian, Fedora, Alpine) within WSL2, it is essential to ensure that the **Hyper-V** virtualization features are enabled on your Windows machine. Docker on WSL2 leverages the **Hyper-V** technology, which is built into Windows, to support containers and virtualized environments.
+
+#### To enable **Hyper-V**:
 
 1. Open **Control Panel** and go to **Programs** -> **Turn Windows features on or off**.
-2. Scroll down and check the box for **Windows Hypervisor Platform**.
+2. Ensure **Hyper-V** and **Windows Hypervisor Platform** are both checked.
 3. Click **OK** and restart your system.
 
-This script simplifies Docker management in WSL2 and helps you get started quickly.
+Enabling **Hyper-V** is required to run WSL2 efficiently with Docker, regardless of the Linux distribution used.
