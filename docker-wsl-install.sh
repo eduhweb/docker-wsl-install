@@ -122,6 +122,8 @@ else
     echo -e "${YELLOW}Docker Compose is already installed.${RESET}"
 fi
 
+sudo service docker start
+
 # Display message in green for next steps
 echo -e "${GREEN}To apply changes, please run the following command from **Windows** Command Prompt or PowerShell:${RESET}"
 echo -e "${GREEN}'wsl.exe --shutdown'${RESET}"
