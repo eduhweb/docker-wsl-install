@@ -1,0 +1,74 @@
+services:
+  wordpress:
+    # WordPress image options (choose one and replace below):
+    # - wordpress:latest              # Latest WordPress with the default PHP version (currently PHP 8.1).
+    # - wordpress:php7.4-apache       # WordPress with PHP 7.4 and Apache.
+    # - wordpress:php8.0-apache       # WordPress with PHP 8.0 and Apache.
+    # - wordpress:php8.1-apache       # WordPress with PHP 8.1 and Apache (latest stable).
+    # - wordpress:php8.2-apache       # WordPress with PHP 8.2 and Apache (if supported).
+    # - wordpress:php7.3-apache       # WordPress with PHP 7.3 and Apache (older version).
+    # - wordpress:php7.2-apache       # WordPress with PHP 7.2 and Apache (legacy version).
+    # - wordpress:php-fpm             # WordPress with the latest PHP and FPM (FastCGI Process Manager).
+    # - wordpress:php7.4-fpm-apache   # WordPress with PHP 7.4, FPM, and Apache.
+    # - wordpress:php8.0-fpm-apache   # WordPress with PHP 8.0, FPM, and Apache.
+    # - wordpress:php8.1-fpm-apache   # WordPress with PHP 8.1, FPM, and Apache.
+    # - wordpress:php-fpm-alpine      # WordPress with FPM and Alpine Linux (lightweight version).
+
+    image: wordpress:latest           # You can change the version here based on the options above
+    container_name: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress_user
+      WORDPRESS_DB_PASSWORD: wordpress_password
+      WORDPRESS_DB_NAME: wordpress_db
+    volumes:
+      - ./wordpress:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    # MySQL and MariaDB image options (choose one and replace below):
+    # MySQL images:
+    # - mysql:latest                  # Latest stable MySQL version.
+    # - mysql:8.0                     # MySQL 8.0 version.
+    # - mysql:5.7                     # MySQL 5.7 version.
+    # - mysql:5.6                     # MySQL 5.6 version (older).
+    # - mysql:8.0-oracle              # MySQL 8.0 Oracle official version.
+    # - mysql:8.0-debian              # MySQL 8.0 Debian-based image.
+    # - mysql:5.7-debian              # MySQL 5.7 Debian-based image.
+    # - mysql:5.6-debian              # MySQL 5.6 Debian-based image.
+    
+    # MariaDB images:
+    # - mariadb:latest                # Latest stable MariaDB version.
+    # - mariadb:10.5                  # MariaDB 10.5 version (long-term support).
+    # - mariadb:10.4                  # MariaDB 10.4 version.
+    # - mariadb:10.3                  # MariaDB 10.3 version (older).
+
+    image: mysql:latest               # You can change the version here based on the options above (e.g., mariadb:latest)
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - db
+
+volumes:
+  db_data:
