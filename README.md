@@ -37,5 +37,14 @@ curl -fsSL https://raw.githubusercontent.com/eduhweb/docker-wsl-install/docker-w
 
 - WSL2 with Ubuntu (or similar).
 - Internet connection for downloading packages.
+- **Windows Home** users: Make sure to enable the **Windows Hypervisor Platform** in your system settings to run Docker.
+
+## Enabling Windows Hypervisor Platform
+
+To enable the **Windows Hypervisor Platform** on Windows Home:
+
+1. Open **Control Panel** and go to **Programs** -> **Turn Windows features on or off**.
+2. Scroll down and check the box for **Windows Hypervisor Platform**.
+3. Click **OK** and restart your system.
 
 This script simplifies Docker management in WSL2 and helps you get started quickly.
